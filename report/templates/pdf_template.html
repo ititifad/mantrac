@@ -1,0 +1,64 @@
+<!-- formset_app/templates/formset_app/pdf_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Entries - PDF</title>
+    <!-- Add your Bootstrap CSS link here if needed -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Report Entries - {{ today }}</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Machine Number</th>
+                <th>Part Number</th>
+                <th>Part Description</th>
+                <th>Quantity</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries_today %}
+                <tr>
+                    <td>{{ entry.machine_number }}</td>
+                    <td>{{ entry.part_number }}</td>
+                    <td>{{ entry.part_description }}</td>
+                    <td>{{ entry.quantity }}</td>
+                    <td>{{ entry.date_added }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
